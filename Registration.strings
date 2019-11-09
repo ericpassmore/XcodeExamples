@@ -1,0 +1,16 @@
+/* 
+  Registration.strings
+  play
+
+  Created by Eric Passmore on 11/9/19.
+  Copyright © 2019 OK2Save. All rights reserved.
+*/
+"registration" = "Registration";
+"name" = "Name";
+"email" = "Email";
+"password" = "Password";
+"name_suggested_text" = "Cool Name";
+"email_suggested_text" = "name@provider.com";
+"password_suggested_text" = "secret";
+"register_button" = "Register";
+"login_button" = "Log In";

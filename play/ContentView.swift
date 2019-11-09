@@ -15,34 +15,40 @@ struct ContentView: View {
     
     var body: some View {
         VStack() {
-            Text("Registration")
+            Text("registration".localized(tableName: "Registration"))
                 .font(.title)
-                .foregroundColor(Color(red: 33/255, green: 33/255, blue: 33/255))
+                .foregroundColor(Color(UIColor.navBlack))
                 .padding(.bottom, 32)
             
             HStack() {
                 VStack(alignment: .leading) {
-                    Text("Email")
+                    Text("email".localized(tableName: "Registration"))
                         .font(.headline)
                         .frame(maxHeight: .infinity)
+                        .foregroundColor(Color(UIColor.navBlack))
                         .padding(.bottom, 4)
-                    Text("Password")
+                    Text("password".localized(tableName: "Registration"))
                         .font(.headline)
                         .frame(maxHeight: .infinity)
+                        .foregroundColor(Color(UIColor.navBlack))
                         .padding(.bottom, 4)
-                    Text("Name")
+                    Text("name".localized(tableName: "Registration"))
                         .font(.headline)
                         .frame(maxHeight: .infinity)
+                        .foregroundColor(Color(UIColor.navBlack))
                         .padding(.bottom, 4)
                 }
                 VStack(alignment: .leading) {
-                    TextField("name@provider.com", text: $email)
+                    TextField("email_suggested_text".localized(tableName: "Registration"),
+                              text: $email)
                         .padding(8)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("secret", text: $password)
+                    TextField("password_suggested_text".localized(tableName: "Registration"),
+                              text: $password)
                         .padding(8)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Cool Name", text: $displayName)
+                    TextField("name_suggested_text".localized(tableName: "Registration"),
+                              text: $displayName)
                         .padding(8)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
@@ -53,19 +59,19 @@ struct ContentView: View {
             HStack() {
                 Group {
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                        Text("Register")
-                            .foregroundColor(Color.white)
+                        Text("register_button".localized(tableName: "Registration"))
+                            .foregroundColor(Color(UIColor.mwhite))
                             .padding()
-                            .background(Color.blue)
+                            .background(Color(UIColor.accent))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }.padding(.leading)
                 Group {
                     Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                        Text("Log In")
-                            .foregroundColor(Color.white)
+                        Text("login_button".localized(tableName: "Registration"))
+                            .foregroundColor(Color(UIColor.mwhite))
                             .padding()
-                            .background(Color.blue)
+                            .background(Color(UIColor.accent))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }.padding(.leading)
