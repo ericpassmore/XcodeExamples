@@ -11,10 +11,12 @@ import SwiftUI
 struct DashboardView: View {
     var body: some View {
         NavigationView {
-        Text("dashboard".localized())
-            .font(.title)
-            .foregroundColor(Color(UIColor.navBlack))
-            .padding(.bottom, 32)
+            NavigationLink(destination: ContentView()) {
+                Text("dashboard".localized())
+                    .font(.title)
+                    .foregroundColor(Color(UIColor.navBlack))
+                    .padding(.bottom, 32)
+            }
         }
         .navigationBarTitle(Text("dashboard".localized()), displayMode: .inline)
         .navigationBarHidden(true)

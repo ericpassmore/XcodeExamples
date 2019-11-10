@@ -8,11 +8,19 @@
 
 import SwiftUI
 
+extension View {
+    func dialog(isShowing: Binding<Bool>) -> some View {
+        DialogWrapperView(isShowing: isShowing,
+                          presenting: { self },
+                          view: LoginView())
+    }
+}
+
 struct ContentView: View {
     @State private var password: String = ""
     @State private var email: String = ""
     @State private var displayName: String = ""
-    @State private var showLoginModal = false
+    @State private var showLoginDialog: Bool = false
     
     var body: some View {
         NavigationView {
@@ -67,25 +75,26 @@ struct ContentView: View {
                             .background(Color(UIColor.accent))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
-                    Button(action: {self.showLoginModal = true}) {
+                    Button(action: {
+                        withAnimation {
+                            self.showLoginDialog.toggle()
+                        }
+                    }) {
                         Text("login_button".localized(tableName: "Registration"))
                             .foregroundColor(Color(UIColor.mwhite))
                             .padding()
                             .background(Color(UIColor.accent))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     }.padding(.leading, 16)
-                    .sheet(isPresented: $showLoginModal, onDismiss: {
-                        print(self.showLoginModal)
-                    }) {
-                        LoginView(message: "This is Modal View2")
-                    }
                 }.padding(.leading)
             }
         }
         .navigationBarTitle(Text("registration".localized(tableName: "Registration")), displayMode: .inline)
         .navigationBarHidden(true)
+        .dialog(isShowing: $showLoginDialog)
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

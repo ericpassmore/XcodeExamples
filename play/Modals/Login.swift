@@ -9,23 +9,45 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(\.presentationMode) var presentation
-    let heightFactor: CGFloat = 0.3
-    let message: String
+    @State private var password: String = ""
+    @State private var email: String = ""
     
     var body: some View {
-        GeometryReader{ geometry in
-            VStack {
-                Text(self.message)
-                Button("Dismiss2") {
-                    self.presentation.wrappedValue.dismiss()
+        VStack(alignment: .leading) {
+            HStack {
+            Text("login".localized())
+                .font(.title)
+                .foregroundColor(Color(UIColor.navBlack))
+                .padding(.bottom, 32)
+                .padding(.leading, 32)
+                Button(action: {}) {
+                    Text("X")
+                }.padding(.leading, 16)
+            }
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("email".localized(tableName: "Registration"))
+                        .font(.headline)
+                        .frame(maxHeight: .infinity)
+                        .foregroundColor(Color(UIColor.navBlack))
+                        .padding(.bottom, 4)
+                    Text("password".localized(tableName: "Registration"))
+                        .font(.headline)
+                        .frame(maxHeight: .infinity)
+                        .foregroundColor(Color(UIColor.navBlack))
+                        .padding(.bottom, 4)
                 }
-            }.frame(width: geometry.size.width,
-                    height: (UIScreen.main.bounds.height * self.heightFactor))
-            .background(RoundedRectangle(cornerRadius: 20)
-                        .fill(Color(UIColor.mwhite))
-                        )
-            .border(Color(UIColor.grey))
+            }
+            VStack(alignment: .leading) {
+                TextField("email_suggested_text".localized(tableName: "Registration"),
+                          text: $email)
+                    .padding(8)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("password_suggested_text".localized(tableName: "Registration"),
+                          text: $password)
+                    .padding(8)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+            }
         }
     }
 }
